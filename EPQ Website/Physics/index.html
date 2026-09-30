@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EPQ Artefact — Physics</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="site-header">
+      <a class="brand" href="../Home/index.html"><span class="logo-mark" aria-hidden="true"><i></i><b></b><em></em></span><span><strong>EPQ ARTEFACT</strong><small>Project notebook</small></span></a>
+      <nav aria-label="Primary navigation"><a href="../Home/index.html">Home</a><a href="../History/index.html">History</a><a href="../Future/index.html">Future</a></nav>
+    </header>
+    <main>
+      <section class="section physics-section" id="physics" aria-labelledby="physics-title">
+        <div class="section-intro"><span class="eyebrow">03 / PHYSICS</span><h1 id="physics-title">See the forces in motion</h1><p>Change one variable at a time and watch the aircraft respond.</p></div>
+        <div class="simulator-layout">
+          <aside class="simulator-note"><span class="eyebrow">Live assessment</span><h2 id="flight-mode">Climbing</h2><p id="flight-insight">Lift exceeds weight, so the airplane gains vertical speed.</p><div class="note-rule"></div><dl><div><dt>Lift</dt><dd id="lift-readout">0.0 kN</dd></div><div><dt>Weight</dt><dd id="weight-readout">0.0 kN</dd></div><div><dt>Thrust</dt><dd id="thrust-readout">0.0 kN</dd></div><div><dt>Drag</dt><dd id="drag-readout">0.0 kN</dd></div></dl></aside>
+          <div class="simulator-stage">
+            <div class="simulator-stage-head"><div><span class="eyebrow">Observation window</span><h2>Relative force map</h2></div><button class="simple-button" id="pause-button">Ⅱ Pause</button></div>
+            <svg class="force-map" viewBox="0 0 720 410" role="img" aria-label="Airplane showing lift, weight, thrust, and drag arrows">
+              <defs><marker id="blue-arrow" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#6EAAED"></path></marker><marker id="navy-arrow" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#1D2339"></path></marker><marker id="pink-arrow" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#C97671"></path></marker></defs>
+              <g class="altitude-guides"><line x1="36" y1="88" x2="687" y2="88"></line><line x1="36" y1="205" x2="687" y2="205"></line><line x1="36" y1="322" x2="687" y2="322"></line></g>
+              <line id="lift-line" class="force-line force-line--lift" marker-end="url(#blue-arrow)"></line><text id="lift-text" class="force-text force-text--lift"></text>
+              <line id="weight-line" class="force-line force-line--weight" marker-end="url(#navy-arrow)"></line><text id="weight-text" class="force-text force-text--weight"></text>
+              <line id="thrust-line" class="force-line force-line--action" marker-end="url(#pink-arrow)"></line><text id="thrust-text" class="force-text force-text--action"></text>
+              <line id="drag-line" class="force-line force-line--action" marker-end="url(#pink-arrow)"></line><text id="drag-text" text-anchor="end" class="force-text force-text--action"></text>
+              <g id="aircraft"><path d="M-56 1 L-22 -11 L29 -11 L61 0 L29 11 L-22 11 Z" fill="#1D2339"></path><path d="M-18 -10 L-2 -43 L12 -42 L10 -10 Z" fill="#6EAAED"></path><path d="M-20 10 L-4 37 L10 36 L8 10 Z" fill="#6EAAED"></path><circle cx="39" cy="0" r="3" fill="#C97671"></circle><path d="M-31 -4 L17 -4" stroke="#F9FFFF" stroke-width="2"></path></g>
+            </svg>
+            <div class="flight-tape"><div><small>Altitude</small><strong id="altitude-readout">1850 m</strong></div><div><small>Airspeed</small><strong id="airspeed-readout">55.0 m/s</strong></div><div><small>Vertical speed</small><strong id="vertical-readout">+0.0 m/s</strong></div></div>
+          </div>
+          <aside class="control-board"><div class="control-board-head"><div><span class="eyebrow">Test inputs</span><h2>Flight controls</h2></div><button class="simple-button" id="reset-button">↻ Reset</button></div>
+            <label class="control-row"><span>Throttle <small>Engine force</small><output id="throttle-value">70%</output></span><input id="throttle" type="range" min="0" max="100" value="70"><small class="range-labels"><i>0%</i><i>100%</i></small></label>
+            <label class="control-row"><span>Pitch attitude <small>Wing angle</small><output id="pitch-value">2°</output></span><input id="pitch" type="range" min="-10" max="16" value="2"><small class="range-labels"><i>-10°</i><i>16°</i></small></label>
+            <label class="control-row"><span>Aircraft mass <small>Gravity load</small><output id="mass-value">750 kg</output></span><input id="mass" type="range" min="500" max="1050" step="10" value="750"><small class="range-labels"><i>500 kg</i><i>1050 kg</i></small></label>
+            <label class="control-row"><span>Wind component <small>Headwind is positive</small><output id="headwind-value">0 m/s</output></span><input id="headwind" type="range" min="-20" max="30" value="0"><small class="range-labels"><i>-20 m/s</i><i>30 m/s</i></small></label>
+          </aside>
+        </div>
+
+        <article class="flight-explainer" aria-labelledby="flight-explainer-title">
+          <div class="flight-explainer-intro">
+            <span class="eyebrow">The science behind the simulator</span>
+            <h2 id="flight-explainer-title">How does an airplane fly?</h2>
+            <p>Flying is really two problems at once: getting an object heavier than air up into the sky and keeping it there, and then steering it once it is up. Four forces are at work the whole time an airplane is flying.</p>
+          </div>
+
+          <div class="explainer-grid">
+            <section class="explainer-block">
+              <h3>The four forces</h3>
+              <p><strong>Weight</strong> is the pull of gravity, always pointing straight down toward the centre of the Earth. It depends on everything the plane carries: the aircraft itself, its fuel, and its passengers and cargo. During a flight the weight constantly changes as fuel is burned, so the pilot has to keep adjusting the controls to keep the plane balanced, or “trimmed.”</p>
+              <p><strong>Lift</strong> is the force that fights back against weight. It is generated by the motion of the airplane through the air, and it points upward, at right angles to the direction the plane is travelling. Most of the lift comes from the wings, and it all acts through a single point called the centre of pressure.</p>
+              <p><strong>Drag</strong> is air’s resistance to the plane moving through it. It points backwards, directly against the direction of flight. Like lift, it depends on the aircraft’s shape, how “sticky” the air is, and how fast the plane is going.</p>
+              <p><strong>Thrust</strong> is the forward push from the engines, and its job is simply to overcome drag. Jet engines do this by blasting hot gas out the back, which pushes the plane forward: an action-and-reaction effect explained by Newton’s Third Law of Motion.</p>
+            </section>
+
+            <section class="explainer-block explainer-block--accent">
+              <h3>Bernoulli’s principle: how a wing makes lift</h3>
+              <p>The secret of lift is Bernoulli’s principle, a discovery from the 1700s about moving fluids. In simple terms: where air flows faster, its pressure is lower; where air flows slower, its pressure is higher.</p>
+              <div class="equation" aria-label="Pressure plus one half times air density times velocity squared equals a constant">p + ½ρV<sup>2</sup> = constant</div>
+              <p>A wing exploits this because of its shape, called an airfoil. Air flowing over the curved upper surface speeds up compared with the air flowing underneath. Because of Bernoulli’s principle, that faster air above the wing sits at lower pressure, while the slower air below stays at higher pressure.</p>
+              <p>The result is a pressure difference: higher pressure underneath pushing up, lower pressure on top pulling up, and the net effect is lift. Engineers calculate the pressure at every point along the wing’s surface, then add up that surface pressure to find the total aerodynamic force on the wing, which can be split into lift and drag.</p>
+              <p class="explainer-note">The wing does not simply “push down on air” to float. It shapes the airflow so that the air itself creates lower pressure on top and higher pressure below.</p>
+            </section>
+
+            <section class="explainer-block">
+              <h3>A common misconception: the engines do not lift the plane</h3>
+              <p>This surprises most people, but the engine’s job is only to overcome drag, not to lift the airplane. It is the wings that do the lifting. That is why gliders can fly with no engines at all, why a paper airplane flies, and why the Space Shuttle glided back to Earth: once something is moving fast enough, the wings generate lift.</p>
+            </section>
+
+            <section class="explainer-block">
+              <h3>How the pilot steers</h3>
+              <p>If the four forces are perfectly balanced, the plane cruises at a constant speed; if one force is stronger, the plane accelerates in that direction. Turning and steering are done with moveable surfaces on the wings and tail that change the local lift. They control the aircraft in <strong>roll</strong> (tilting the wings), <strong>pitch</strong> (nose up or down), and <strong>yaw</strong> (nose left or right).</p>
+            </section>
+          </div>
+
+          <section class="explainer-conclusion">
+            <h3>Putting it all together</h3>
+            <p>The reason the airplane works at all is that it is designed as one connected system. The earliest successful airplane builders succeeded where others failed because they treated the airplane as an integrated whole, balancing aerodynamics, propulsion, structures, and control within a single framework.</p>
+            <p><strong>In one sentence:</strong> the engines pull the plane forward fast enough that its curved wings create lower pressure above and higher pressure below, and that pressure difference lifts the plane while the pilot balances lift against weight and thrust against drag to steer.</p>
+          </section>
+        </article>
+      </section>
+    </main>
+    <footer class="site-footer"><span>EPQ ARTEFACT / Physics</span><a href="../Home/index.html">Back to home ↑</a></footer>
+  </div>
+  <script src="physics.js"></script>
+</body>
+</html>

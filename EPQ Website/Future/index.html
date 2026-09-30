@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EPQ Artefact — Future Ideas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="site-header">
+      <a class="brand" href="../Home/index.html"><span class="logo-mark" aria-hidden="true"><i></i><b></b><em></em></span><span><strong>EPQ ARTEFACT</strong><small>Project notebook</small></span></a>
+      <nav aria-label="Primary navigation"><a href="../Home/index.html">Home</a><a href="../History/index.html">History</a><a href="../Physics/index.html">Physics</a></nav>
+    </header>
+    <main>
+      <section class="section future-section" id="future" aria-labelledby="future-title">
+        <div class="section-intro"><span class="eyebrow">04 / FUTURE</span><h1 id="future-title">Ideas For The Future</h1><p>We get to create the future of flight.</p></div>
+        <section class="idea-board" aria-labelledby="idea-board-title">
+          <div class="idea-board-heading">
+            <div>
+              <span class="eyebrow">COMMUNITY PINBOARD</span>
+              <h2 id="idea-board-title">Pin your own idea</h2>
+              <p>Add a thought about the future of flight. Your notes are saved in this browser so you can return to them later.</p>
+            </div>
+            <span class="board-count" id="board-count" aria-live="polite">0 ideas pinned</span>
+          </div>
+
+          <form class="idea-form" id="idea-form">
+            <div class="idea-form-row">
+              <label for="idea-author">Your name <span>(optional)</span></label>
+              <input id="idea-author" name="author" type="text" maxlength="32" placeholder="e.g. Alex">
+            </div>
+            <div class="idea-form-row idea-form-row--wide">
+              <label for="idea-text">Your idea</label>
+              <textarea id="idea-text" name="idea" maxlength="240" rows="3" placeholder="What should this project explore next?" required></textarea>
+              <small class="character-count" id="character-count">0 / 240</small>
+            </div>
+            <button class="pin-button" type="submit">Pin idea +</button>
+          </form>
+
+          <div class="idea-board-status" id="idea-board-status" role="status" aria-live="polite"></div>
+          <div class="idea-pins" id="idea-pins" aria-live="polite"></div>
+        </section>
+      </section>
+    </main>
+    <footer class="site-footer"><span>EPQ ARTEFACT / Future ideas</span><a href="../Home/index.html">Back to home ↑</a></footer>
+  </div>
+  <script src="future.js"></script>
+</body>
+</html>
